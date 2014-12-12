@@ -1,0 +1,10 @@
+# All files
+*
+
+# Except for
+!.gitignore
+!.tmux.conf
+!.inputrc
+!.bashrc
+!.profile
+!.w3m/
