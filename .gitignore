@@ -17,3 +17,8 @@
 !.local/
 !.local/bin
 !.local/bin/hgt
+!.config/
+!.config/powerline/
+!.config/powerline/*
+!.config/powerline/*/*
+!.config/powerline/*/*/*
