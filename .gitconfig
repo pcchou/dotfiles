@@ -1,0 +1,15 @@
+[user]
+	email = pcchou@pcchou.me
+	name = pcchou
+[core]
+	editor = vim
+[color]
+	ui = true
+[alias]
+	lg = log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+[credential]
+	helper = cache --timeout=3600
+[push]
+	default = simple
+[merge]
+	tool = vimdiff2
