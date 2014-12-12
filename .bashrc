@@ -123,8 +123,6 @@ parse_git_branch() {
 }
 #PS1="\u@\h:\w\$(parse_git_branch)\$ "
 
-export GOPATH=$HOME/Go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 #source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
@@ -134,3 +132,5 @@ if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.s
 fi
 #PS1="\[\e]0;\w$hostname\a\]$PS1"
 TERM=xterm-256color
+PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
+export PATH
