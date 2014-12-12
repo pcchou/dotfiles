@@ -11,3 +11,6 @@
 !README.md
 !.bash_profile
 !.bash_aliases
+!.ssh/
+!.ssh/id_rsa.pub
+!.ssh/config
