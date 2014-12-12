@@ -126,10 +126,6 @@ parse_git_branch() {
 export GOPATH=$HOME/Go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-export PATH="$HOME/bin:$PATH"
-export PATH="$PATH:$HOME/scripts"
-export PATH="$HOME/.local/bin:$PATH"
-
 #source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 
 
