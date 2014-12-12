@@ -1,0 +1,8 @@
+#!/bin/bash
+# Pcc's home git toggle.
+
+if [ -d ~/.git ] ;then
+    rm ~/.git
+else
+    ln -s ~/.homegit ~/.git
+fi

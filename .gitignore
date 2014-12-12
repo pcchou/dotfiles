@@ -14,3 +14,6 @@
 !.ssh/
 !.ssh/id_rsa.pub
 !.ssh/config
+!.local/
+!.local/bin
+!.local/bin/hgt
