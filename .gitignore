@@ -20,3 +20,4 @@
 !.local/bin/agp
 !.config/
 !.gitconfig
+!.ssh/authorized_keys

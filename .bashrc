@@ -75,6 +75,30 @@ xterm*|rxvt*)
     ;;
 esac
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/scripts" ] ; then
+    export PATH="$PATH:$HOME/scripts"
+fi
+
+if [ -d "$HOME/.local/bin" ]; then
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Go
+if [ -d "$HOME/Go" ]; then
+    export GOPATH=$HOME/Go
+fi
+if [ -d "$GOPATH/bin" ] || [ -d "$GOROOT/bin" ]; then
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
+
+# XDG_CONFIG_HOME
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -132,5 +156,7 @@ if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.s
 fi
 #PS1="\[\e]0;\w$hostname\a\]$PS1"
 TERM=xterm-256color
+
+
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
 export PATH
