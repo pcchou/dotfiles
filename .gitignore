@@ -12,8 +12,6 @@
 !.bash_profile
 !.bash_aliases
 !.ssh/
-!.ssh/id_rsa.pub
-!.ssh/id_rsa_phone.pub
 !.ssh/config
 !.local/
 !.local/bin
