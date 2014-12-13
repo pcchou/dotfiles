@@ -1,0 +1,16 @@
+#!/bin/bash
+# All-git-pull stuff
+
+gitdirs=("$HOME/.vim" "$HOME/.config/powerline")
+cd $HOME
+if [ ! -d ~/.git ]; then
+    ln -s ~/.homegit ~/.git
+fi
+echo $HOME
+git pull
+
+for gitdir in "${gitdirs[@]}";do
+    cd $gitdir
+    echo $gitdir
+    git pull
+done

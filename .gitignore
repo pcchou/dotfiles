@@ -17,5 +17,6 @@
 !.local/
 !.local/bin
 !.local/bin/hgt
+!.local/bin/agp
 !.config/
 !.gitconfig
