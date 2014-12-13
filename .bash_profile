@@ -22,6 +22,9 @@ if [ -d "$GOPATH/bin" || -d "$GOROOT/bin" ]; then
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
 
+# XDG_CONFIG_HOME
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # include .bashrc if it exists
 if [ -f "$HOME/.bashrc" ]; then
 . "$HOME/.bashrc"
