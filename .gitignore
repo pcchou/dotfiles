@@ -20,3 +20,6 @@
 !.config/
 !.gitconfig
 !.ssh/authorized_keys
+!.tmux/
+!.tmux/*
+!.tmux/*/*/*
