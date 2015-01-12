@@ -1,5 +1,6 @@
 alias python=python2
 alias mcedit='PWDB=$(pwd);cd /home/pcchou/Documents/mcedit/;python mcedit.py;cd $PWDB'
+alias gpa='gpa --disable-x509'
 
 alias 貓=cat
 alias 回音=echo
