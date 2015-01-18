@@ -7,10 +7,10 @@ if [ ! -d ~/.git ]; then
     ln -s ~/.homegit ~/.git
 fi
 echo $HOME
-git pull --all
+git update-all
 
 for gitdir in "${gitdirs[@]}";do
     cd $gitdir
     echo $gitdir
-    git pull --all
+    git update-all
 done

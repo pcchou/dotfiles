@@ -17,6 +17,7 @@
 !.local/bin
 !.local/bin/hgt
 !.local/bin/agp
+!.local/bin/git-update-all
 !.config/
 !.gitconfig
 !.ssh/authorized_keys
