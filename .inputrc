@@ -5,4 +5,5 @@ set completion-ignore-case On
 "\ek": history-search-backward
 "\e[B": history-search-forward
 "\ej": history-search-forward
+TAB: menu-complete
 set show-all-if-ambiguous on
