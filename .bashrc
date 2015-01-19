@@ -145,16 +145,17 @@ fi
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-#PS1="\u@\h:\w\$(parse_git_branch)\$ "
-
-
-#source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-
-
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-	    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
-#PS1="\[\e]0;\w$hostname\a\]$PS1"
+
+if ! [ -n $npl ]; then
+  if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+	      source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+  fi
+else
+  PS1="\u@\h:\w\$(parse_git_branch)\$ "
+  PS1="\[\e]0;\w$hostname\a\]$PS1"
+  alias _powerline_set_prompt='#'
+fi
 TERM=xterm-256color
 
 
