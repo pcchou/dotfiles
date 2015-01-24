@@ -3,7 +3,6 @@
 
 # Except for
 !.gitignore
-!.tmux.conf
 !.inputrc
 !.bashrc
 !.profile
@@ -21,6 +20,3 @@
 !.config/
 !.gitconfig
 !.ssh/authorized_keys
-!.tmux/
-!.tmux/*
-!.tmux/*/*/*
