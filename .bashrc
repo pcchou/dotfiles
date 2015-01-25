@@ -104,20 +104,7 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-TERM=xterm-256color
-if ! [ -n "$npl" ]; then
-  if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-  else
-    if [ -n "$SSH_CLIENT" ]; then
-      PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;36m\]$(parse_git_branch)\[\e[m\]\[\e[1;32m\]\$ \[\e[m\]'
-    else
-      PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;36m\]$(parse_git_branch)\[\e[m\]\[\e[1;32m\]\$ \[\e[m\]'
-    fi
-    alias _powerline_set_prompt='#'
-    alias _powerline_tmux_set_pwd='#'
-  fi
-else
+nplprompt() {
   if [ -n "$SSH_CLIENT" ]; then
     PS1='\[\e[0;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;36m\]$(parse_git_branch)\[\e[m\]\[\e[1;32m\]\$ \[\e[m\]'
   else
@@ -125,6 +112,18 @@ else
   fi
   alias _powerline_set_prompt='#'
   alias _powerline_tmux_set_pwd='#'
+}
+
+TERM=xterm-256color
+
+if ! [ -n "$npl" ]; then
+  if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+  else
+    nplprompt
+  fi
+else
+  nplprompt
 fi
 
 
