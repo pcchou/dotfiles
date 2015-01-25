@@ -7,7 +7,7 @@ git_update_all() {
   [ "$1" = "-n" ] && shift && run=echo
 
   for x in $( git branch | cut -c3- ) ; do
-     $run git checkout $x && $run git pull --ff-only || return 2
+    $run git checkout $x && $run git pull --ff-only && $run git submodule update --init --recursive || return 2
   done
 
   [ ${#br} -gt 0 ] && $run git checkout "$br"
