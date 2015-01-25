@@ -1,4 +1,4 @@
-alias python=python2
+alias python=python3
 alias mcedit='PWDB=$(pwd);cd /home/pcchou/Documents/mcedit/;python mcedit.py;cd $PWDB'
 alias gpa='gpa --disable-x509'
 alias nbash='npl='true' bash'
