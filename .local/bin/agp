@@ -1,16 +1,25 @@
 #!/bin/bash
 # All-git-pull stuff
 
-gitdirs=("$HOME/.vim" "$HOME/.config/powerline" "/home/pcchou/.tmux/")
-cd $HOME
-if [ ! -d ~/.git ]; then
-    ln -s ~/.homegit ~/.git
-fi
-echo $HOME
-git update-all
-
-for gitdir in "${gitdirs[@]}";do
-    cd $gitdir
-    echo $gitdir
+function fagp{
+    gitdirs=("$HOME/.vim" "$HOME/.config/powerline" "/home/pcchou/.tmux/")
+    cd $HOME
+    if [ ! -d ~/.git ]; then
+	ln -s ~/.homegit ~/.git
+    fi
+    echo $HOME
     git update-all
-done
+
+    for gitdir in "${gitdirs[@]}";do
+	cd $gitdir
+	echo $gitdir
+	git update-all
+    done
+}
+
+if [! -d ~/.git ];then
+    fagp
+    hgt
+else
+    fagp
+fi
