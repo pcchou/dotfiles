@@ -17,7 +17,7 @@ fagp(){
     done
 }
 
-if [! -d ~/.git ];then
+if ! [ -d ~/.git ];then
     fagp
     hgt
 else
