@@ -14,3 +14,5 @@
 	default = simple
 [merge]
 	tool = vimdiff2
+[github]
+	user = pcchou
