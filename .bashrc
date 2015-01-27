@@ -128,6 +128,7 @@ fi
 
 # GitHub Hub
 eval "$(hub alias -s)"
+hub-completion
 
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
 export PATH
