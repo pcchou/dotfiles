@@ -3,7 +3,7 @@ alias mcedit='PWDB=$(pwd);cd /home/pcchou/Documents/mcedit/;python mcedit.py;cd 
 alias gpa='gpa --disable-x509'
 alias nbash='npl='"'true'"' bash'
 alias ybash='npl='"''"' bash'
-alias nvim='vim -u .vim/npl.vimrc'
+alias nvim='vim -u ~/.vim/npl.vimrc'
 
 alias 貓=cat
 alias 回音=echo
