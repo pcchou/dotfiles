@@ -5,6 +5,7 @@ alias nbash='npl='"'true'"' bash'
 alias ybash='npl='"''"' bash'
 alias nvim='vim -u ~/.vim/npl.vimrc'
 alias avg='awk "{ total += \$0; count++ } END { print total/count }"'
+alias bc='bc -l'
 
 alias 貓=cat
 alias 回音=echo
