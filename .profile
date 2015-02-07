@@ -25,7 +25,7 @@ fi
 if [ -d "$HOME/Go" ]; then
     export GOPATH=$HOME/Go
 fi
-if [ -d "$GOPATH/bin"] || [ -d "$GOROOT/bin" ]; then
+if [ -d "$GOPATH/bin" ] || [ -d "$GOROOT/bin" ]; then
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
 

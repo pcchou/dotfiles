@@ -22,3 +22,4 @@
 !.config/
 !.gitconfig
 !.ssh/authorized_keys
+!.xinitrc
