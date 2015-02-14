@@ -1,25 +1,29 @@
-# All files
 *
+# All files
 
 # Except for
-!.gitignore
-!.inputrc
-!.bashrc
-!.profile
-!.w3m/
-!README.md
+!.aliases
 !.bash_profile
-!.bash_aliases
-!.ssh/
-!.ssh/config
-!.local/
-!.local/bin
-!.local/bin/hgt
-!.local/bin/agp
-!.local/bin/git-update-all
-!.local/bin/hub-completion
-!.local/bin/imgur
+!.bashrc
 !.config/
 !.gitconfig
+!.gitignore
+!.inputrc
+!.local/
+!.local/bin
+!.local/bin/agp
+!.local/bin/git-update-all
+!.local/bin/hgt
+!.local/bin/hub-completion
+!.local/bin/imgur
+!.omzcustom/
+!.omzcustom/**
+!.profile
+!README.md
+!.ssh/
 !.ssh/authorized_keys
+!.ssh/config
+!.w3m/**
 !.xinitrc
+!.zshenv
+!.zshrc
