@@ -8,16 +8,18 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-eval `dircolors /home/pcchou/.omzcustom/themes/dircolors-solarized/dircolors.256dark`
+source "$HOME/.omzcustom/gitrepo/zsh-git-prompt/zshrc.sh"
+
+eval `dircolors $HOME/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
 
 #powerline
 nplprompt() {
   if [ -n "$SSH_CLIENT" ]; then
     PS1='%{$fg[yellow]%}$(whoami)@$(hostname)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
-    RPS1='%{$fg[cyan]%}$(parse_git_branch)%{$reset_color%}'
+    RPS1='%{$fg[cyan]%}$(git_super_status)%{$reset_color%}'
   else
     PS1='%{$fg[yellow]%}$(whoami)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
-    RPS1='%{$fg[cyan]%}$(parse_git_branch)%{$reset_color%}'
+    RPS1='%{$fg[cyan]%}$(git_super_status)%{$reset_color%}'
   fi
 }
 
