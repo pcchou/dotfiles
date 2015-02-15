@@ -12,25 +12,25 @@ source "$HOME/.omzcustom/gitrepo/zsh-git-prompt/zshrc.sh"
 
 eval `dircolors $HOME/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
 
-git_supper_status() {
-  git_super_status | sed 's/\([●✔✖✚]\)/\1 /g'
-}
-
 #powerline
 nplprompt() {
   if [ -n "$SSH_CLIENT" ]; then
     PS1='%{$fg[yellow]%}$(whoami)@$(hostname)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
-    RPS1='%{$fg[cyan]%}$(git_supper_status)%{$reset_color%}'
+    RPS1='$(git_super_status)'
   else
     PS1='%{$fg[yellow]%}$(whoami)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
-    RPS1='%{$fg[cyan]%}$(git_supper_status)%{$reset_color%}'
+    RPS1='$(git_super_status)'
   fi
 }
 
 if ! [ -n "$npl" ]; then
   if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]; then
     . ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-    RPS1='%{$fg[cyan]%}$(git_supper_status)%{$reset_color%}'
+    #if [[ -n "$(git_super_status)" ]]; then
+    #  RPS1='$(parse_git_branch)'
+    #else
+    #  RPS1=''
+    #fi
   else
     nplprompt
   fi
