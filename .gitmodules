@@ -1,3 +1,6 @@
-[submodule ".omzcustom/themes/dircolors-solarized"]
-	path = .omzcustom/themes/dircolors-solarized
+[submodule ".omzcustom/gitrepo/dircolors-solarized"]
+	path = .omzcustom/gitrepo/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+[submodule ".omzcustom/gitrepo/zsh-git-prompt"]
+	path = .omzcustom/gitrepo/zsh-git-prompt
+	url = https://github.com/olivierverdier/zsh-git-prompt.git
