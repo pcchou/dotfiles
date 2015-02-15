@@ -1,0 +1,3 @@
+[submodule ".omzcustom/themes/dircolors-solarized"]
+	path = .omzcustom/themes/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
