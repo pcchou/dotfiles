@@ -82,6 +82,11 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+bindkey "^[[C" forward-word
+bindkey "^[[D" backward-word
+bindkey "^[^[OC" forward-word
+bindkey "^[^[OD" backward-word
+
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
 export PATH
 
