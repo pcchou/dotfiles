@@ -22,7 +22,6 @@
 !README.md
 !.ssh/
 !.ssh/authorized_keys
-!.ssh/config
 !.w3m/**
 !.xinitrc
 !.zshenv
