@@ -46,7 +46,7 @@ export TERM="xterm-256color"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git catimg command-not-found common-aliases debian dircycle gpg-agent jsontools last-working-dir screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm)
+plugins=(git catimg command-not-found common-aliases debian dircycle gpg-agent jsontools last-working-dir screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm encode64)
 
 # User configuration
 
@@ -90,8 +90,12 @@ bindkey "^[[C" forward-word
 bindkey "^[[D" backward-word
 bindkey "^[^[OC" forward-word
 bindkey "^[^[OD" backward-word
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '\e[A' up-line-or-beginning-search
+bindkey '\e[B' down-line-or-beginning-search
 
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
 export PATH
