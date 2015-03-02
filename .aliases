@@ -25,6 +25,7 @@ alias avg='awk "{ total += \$0; count++ } END { print total/count }"'
 alias bc='bc -l'
 alias netusage='watch -n0.5 -t "vnstat -d -i eth0+usb0+bnep0|grep -v \"\-\-\""'
 
+alias rsavzcp='rsync -avz --progress'
 
 
 alias 貓=cat
