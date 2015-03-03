@@ -1,9 +1,4 @@
 $include /etc/inputrc
 set completion-ignore-case On
 
-"\e[A": history-search-backward
-"\ek": history-search-backward
-"\e[B": history-search-forward
-"\ej": history-search-forward
-TAB: menu-complete
 set show-all-if-ambiguous on
