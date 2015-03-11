@@ -104,3 +104,4 @@ export PATH
 # here will override ones with the same name in the main plugins directory.
 
 alias git=hub
+alias xclipc=xclip -selection clipboard
