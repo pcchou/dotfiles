@@ -90,11 +90,14 @@ bindkey "^[[C" forward-word
 bindkey "^[[D" backward-word
 bindkey "^[^[OC" forward-word
 bindkey "^[^[OD" backward-word
+
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+bindkey '\eOA' up-line-or-beginning-search
 bindkey '\e[A' up-line-or-beginning-search
+bindkey '\eOB' down-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
 
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
