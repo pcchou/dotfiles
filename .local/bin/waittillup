@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+if [[ -n "$2" ]] ;then
+    port="$2"
+else
+    port='22'
+fi
+
+if [[ -z "$1" ]] ;then
+    echo 'No address provided!' 1>&2
+else
+    until nc -vzw 2 $1 $port; do sleep 1; done
+fi
