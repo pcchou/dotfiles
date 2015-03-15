@@ -90,11 +90,14 @@ bindkey "^[[C" forward-word
 bindkey "^[[D" backward-word
 bindkey "^[^[OC" forward-word
 bindkey "^[^[OD" backward-word
+
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+bindkey '\eOA' up-line-or-beginning-search
 bindkey '\e[A' up-line-or-beginning-search
+bindkey '\eOB' down-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
 
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
@@ -103,5 +106,5 @@ export PATH
 # Add your own custom plugins in the custom/plugins directory. Plugins placed
 # here will override ones with the same name in the main plugins directory.
 
-alias git=hub
-alias xclipc=xclip -selection clipboard
+which hub > /dev/null && alias git=hub
+alias xclipc='xclip -selection clipboard'
