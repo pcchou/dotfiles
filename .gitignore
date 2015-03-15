@@ -20,8 +20,6 @@
 !.omzcustom/**
 !.profile
 !README.md
-!.ssh/
-!.ssh/authorized_keys
 !.w3m/**
 !.xinitrc
 !.zshenv
