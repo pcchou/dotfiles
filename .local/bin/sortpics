@@ -52,7 +52,7 @@ JPEG_TO_JPG=TRUE
 # Extensions are matched case-insensitive. *.jpg is treated the same as *.JPG, etc.
 # Can handle any file type; not just EXIF-enabled file types. See USE_LMDATE above.
 #
-FILETYPES=("*.jpg" "*.jpeg" "*.png" "*.tif" "*.tiff" "*.gif" "*.xcf")
+FILETYPES=("*.jpg")
 #
 # Optional: Prefix of new top-level directory to move sorted photos to.
 # if you use MOVETO, it MUST have a trailing slash! Can be a relative pathspec, but an
