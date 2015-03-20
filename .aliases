@@ -27,9 +27,10 @@ alias netusage='watch -n0.5 -t "vnstat -d -i eth0+usb0+bnep0|grep -v \"\-\-\""'
 
 alias rscp='rsync -havz --progress'
 alias rscpd='rsync -havz --progress --delete'
-alias rsqcp='rsync -haz --progress'
-alias rsqcpd='rsync -haz --progress --delete'
+alias rsqcp='rsync -qhaz --progress'
+alias rsqcpd='rsync -qhaz --progress --delete'
 
+alias xclipc='xclip -selection clipboard'
 
 alias 貓=cat
 alias 回音=echo
