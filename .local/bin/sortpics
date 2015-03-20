@@ -82,7 +82,7 @@ MOVETO=""
 if [[ "$1" == "doAction" && "$2" != "" ]]; then
     # Check for EXIF and process it
     echo -n ": Checking EXIF... "
-    DATETIME=`stat --printf='%y' "$2" | awk -F. '{print $1}' | sed y/-/:/`
+    DATETIME=`exiftool 2015/02/19/IMG_9669.jpg|grep 'Date\/Time\ Original'|awk -F': ' '{print $2}'`
     if [[ "$DATETIME" == "" ]]; then
         echo "not found."
         if [[ $USE_LMDATE == "TRUE" ]]; then
