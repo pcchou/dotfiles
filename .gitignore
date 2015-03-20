@@ -17,6 +17,7 @@
 !.local/bin/hub-completion
 !.local/bin/imgur
 !.local/bin/waittillup
+!.local/bin/sortpics
 !.omzcustom/
 !.omzcustom/**
 !.profile
