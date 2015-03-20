@@ -157,7 +157,7 @@ if [[ "$1" == "doAction" && "$2" != "" ]]; then
         echo "Scanning for $x..."
         # FIXME: Eliminate problems with unusual characters in filenames.
         # Currently the exec call will fail and they will be skipped.
-        export curjobstamp=$(date +%s)
+        export curjobstamp=$(date +%s%N)
         find . -type f -exec basename {} \; | tr '[:upper:]' '[:lower:]' | sort | uniq -c | grep -v "^[ \t]*1 " > /tmp/sortpics_$curjobstamp
         find . -iname "$x" -print0 -exec sh -c "$0 doAction '{}'" \;
         echo "... end of $x"
