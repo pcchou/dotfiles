@@ -107,7 +107,7 @@ if [[ "$1" == "doAction" && "$2" != "" ]]; then
     # Evaluate the file extension
     if [ "$USE_FILE_EXT" == "TRUE" ]; then
         # Get the FILE type and lowercase it for use as the extension
-        EXT=`file -b $2 | awk -F' ' '{print $1}' | tr '[:upper:]' '[:lower:]'`
+        EXT=`file -b "$2" | awk -F' ' '{print $1}' | tr '[:upper:]' '[:lower:]'`
         FILENAME=`echo $2 | awk -F'/' '{print $NF}' | awk -F. '{print $1}'`
         if [[ "${EXT}" == "jpeg" && "${JPEG_TO_JPG}" == "TRUE" ]]; then EXT="jpg"; fi;
         else
