@@ -53,6 +53,7 @@ JPEG_TO_JPG=TRUE
 # Can handle any file type; not just EXIF-enabled file types. See USE_LMDATE above.
 #
 FILETYPES=("*.jpg")
+#FILETYPES=()
 #
 # Optional: Prefix of new top-level directory to move sorted photos to.
 # if you use MOVETO, it MUST have a trailing slash! Can be a relative pathspec, but an
@@ -70,29 +71,22 @@ MOVETO=""
 # This may be an issue for environments which use gawk instead of awk, etc.
 # Please report your environment and adjustments at the URL above.
 #
-###############################################################################
-# Nested execution (action) call
-# This is invoked when the programs calls itself with
-# $1 = "doAction"
-# $2 = <file to handle>
-# This is NOT expected to be run by the user in this matter, but can be for single image
-# sorting. Minor output issue when run in this manner. Related to find -print0 below.
-#
-# Are we supposed to run an action? If not, skip this entire section.
-if [[ "$1" == "doAction" && "$2" != "" ]]; then
+
+function doAction {
     # Check for EXIF and process it
+    echo -n $1
     echo -n ": Checking EXIF... "
-    DATETIME=`exiftool $2|grep 'Date\/Time\ Original'|awk -F': ' '{print $2}'`
+    DATETIME=`exiftool $1|grep 'Date\/Time\ Original'|awk -F': ' '{print $NF}'`
     if [[ "$DATETIME" == "" ]]; then
         echo "not found."
         if [[ $USE_LMDATE == "TRUE" ]]; then
             # I am deliberately not using %Y here because of the desire to display the date/time
             # to the user, though I could avoid a lot of post-processing by using it.
-            DATETIME=`stat --printf='%y' "$2" | awk -F. '{print $1}' | sed y/-/:/`
+            DATETIME=`stat --printf='%y' "$1" | awk -F. '{print $1}' | sed y/-/:/`
             echo " Using LMDATE: $DATETIME"
         else
             echo " Moving to ./noexif/"
-            mkdir -p "${MOVETO}noexif" && mv -f "$2" "${MOVETO}noexif"
+            mkdir -p "${MOVETO}noexif" && mv -f "$1" "${MOVETO}noexif"
             exit
         fi;
     else
@@ -107,16 +101,16 @@ if [[ "$1" == "doAction" && "$2" != "" ]]; then
     # Evaluate the file extension
     if [ "$USE_FILE_EXT" == "TRUE" ]; then
         # Get the FILE type and lowercase it for use as the extension
-        EXT=`file -b "$2" | awk -F' ' '{print $1}' | tr '[:upper:]' '[:lower:]'`
-        FILENAME=`echo $2 | awk -F'/' '{print $NF}' | awk -F. '{print $1}'`
+        EXT=`file -b "$1" | awk -F' ' '{print $1}' | tr '[:upper:]' '[:lower:]'`
+        FILENAME=`echo $1 | awk -F'/' '{print $NF}' | awk -F. '{print $1}'`
         if [[ "${EXT}" == "jpeg" && "${JPEG_TO_JPG}" == "TRUE" ]]; then EXT="jpg"; fi;
         else
             # Lowercase and use the current extension as-is
-            EXT=`echo $2 | awk -F. '{print $NF}' | tr '[:upper:]' '[:lower:]'`
+            EXT=`echo $1 | awk -F. '{print $NF}' | tr '[:upper:]' '[:lower:]'`
         fi;
         # Evaluate the file name
         # Get date and times from EXIF stamp
-        ETIME=`echo $DATETIME | awk -F' ' '{print $2}'`
+        ETIME=`echo $DATETIME | awk -F' ' '{print $NF}'`
         # Unix Formatted DATE and TIME - For feeding to date()
         UFDATE=`echo $EDATE | sed y/:/-/`
         # Unix DateSTAMP
@@ -131,42 +125,42 @@ if [[ "$1" == "doAction" && "$2" != "" ]]; then
         # sed issue for y command fix provided by thomas
         DIRNAME=`echo $EDATE | sed y-:-/-`
         echo -n " Moving to ${MOVETO}${DIRNAME}${MVCMD} ... "
-        mkdir -p "${MOVETO}${DIRNAME}" && mv -f "$2" "${MOVETO}${DIRNAME}${MVCMD}"
-        #mkdir -p "${MOVETO}${DIRNAME}" && cp -f "$2" "${MOVETO}${DIRNAME}${MVCMD}"
-        echo "done."
+        mkdir -p "${MOVETO}${DIRNAME}" && mv -f "$1" "${MOVETO}${DIRNAME}${MVCMD}" && echo "done."
+        #mkdir -p "${MOVETO}${DIRNAME}" && cp -f "$1" "${MOVETO}${DIRNAME}${MVCMD}" && echo "done."
         echo ""
         exit
+}
+export -f doAction
+
+###############################################################################
+# Scanning (find) loop
+# This is the normal loop that is run when the program is executed by the user.
+# This runs find for the recursive searching, then find invokes this program with the two
+# parameters required to trigger the above loop to do the heavy lifting of the sorting.
+# Could probably be optimized into a function instead, but I don't think there's an
+# advantage performance-wise. Suggestions are welcome at the URL at the top.
+for x in "${FILETYPES[@]}"; do
+    # Check for the presence of imagemagick and the identify command.
+    # Assuming its valid and working if found.
+    I=`which identify`
+    if [ "$I" == "" ]; then
+        echo "The 'identify' command is missing or not available."
+        echo "Is imagemagick installed?"
+        exit 1
     fi;
-    #
-    ###############################################################################
-    # Scanning (find) loop
-    # This is the normal loop that is run when the program is executed by the user.
-    # This runs find for the recursive searching, then find invokes this program with the two
-    # parameters required to trigger the above loop to do the heavy lifting of the sorting.
-    # Could probably be optimized into a function instead, but I don't think there's an
-    # advantage performance-wise. Suggestions are welcome at the URL at the top.
-    for x in "${FILETYPES[@]}"; do
-        # Check for the presence of imagemagick and the identify command.
-        # Assuming its valid and working if found.
-        I=`which identify`
-        if [ "$I" == "" ]; then
-            echo "The 'identify' command is missing or not available."
-            echo "Is imagemagick installed?"
-            exit 1
-        fi;
-        echo "Scanning for $x..."
-        # FIXME: Eliminate problems with unusual characters in filenames.
-        # Currently the exec call will fail and they will be skipped.
-        export curjobstamp=$(date +%s%N)
-        find . -type f -exec basename {} \; | tr '[:upper:]' '[:lower:]' | sort | uniq -c | grep -v "^[ \t]*1 " > /tmp/sortpics_$curjobstamp
-        find . -iname "$x" -print0 -exec sh -c "$0 doAction '{}'" \;
-        echo "... end of $x"
-    done;
-    # clean up empty directories. Find can do this easily.
-    # Remove Thumbs.db first because of thumbnail caching
-    echo -n "Removing Thumbs.db files ... "
-    find . -name Thumbs.db -delete
-    echo "done."
-    echo -n "Cleaning up empty directories ... "
-    find . -empty -delete
-    echo "done."
+    echo "Scanning for $x..."
+    # FIXME: Eliminate problems with unusual characters in filenames.
+    # Currently the exec call will fail and they will be skipped.
+    export curjobstamp=$(date +%s%N)
+    find . -type f -exec basename {} \; | tr '[:upper:]' '[:lower:]' | sort | uniq -c | grep -v "^[ \t]*1 " > /tmp/sortpics_$curjobstamp
+    find . -iname "$x" -print0 | sort | head -c -1 | xargs -0 -n1 -I{} bash -c "doAction {}"
+    echo "... end of $x"
+done;
+# clean up empty directories. Find can do this easily.
+# Remove Thumbs.db first because of thumbnail caching
+echo -n "Removing Thumbs.db files ... "
+find . -name Thumbs.db -delete
+echo "done."
+echo -n "Cleaning up empty directories ... "
+find . -empty -delete
+echo "done."
