@@ -32,3 +32,5 @@ alias rsqcpd='rsync -qhaz --progress --delete'
 
 alias xclipc='xclip -selection clipboard'
 
+alias googlettszh="xargs -n1 -I{} bash -c \"wget http://translate.google.com/translate_tts\?ie\=utf-8\&tl\=zh\&q\='`python2 -c 'import sys, urllib as ul; print ul.quote_plus({})'`' -U 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0' -O- |mpg123 -\""
+alias googlettsen="xargs -n1 -I{} bash -c \"wget http://translate.google.com/translate_tts\?ie\=utf-8\&tl\=en\&q\='`python2 -c 'import sys, urllib as ul; print ul.quote_plus({})'`' -U 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0' -O- |mpg123 -\""
