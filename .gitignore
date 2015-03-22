@@ -18,6 +18,7 @@
 !.local/bin/imgur
 !.local/bin/waittillup
 !.local/bin/sortpics
+!.local/bin/seadogbot
 !.omzcustom/
 !.omzcustom/**
 !.profile
