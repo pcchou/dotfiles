@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# seadogbot by pcchou (http://pcchou.me/), licenced under MIT License.
+# (included shic (http://github.com/halhen/shic), public domain)
+
 function shic() {
     # Defaults
     [[ -z $SHIC_HOST ]] && SHIC_HOST="irc.freenode.net"
