@@ -130,6 +130,7 @@ function shic() {
 shic -n seadogbot |\
     sed -ru "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" |\
     grep -P --line-buffered '^<pcchou.{0,3}@seadogbot>|^<pcchou.{0,3}@.+> seadogbot[,:]|^<seadog007.{0,3}@seadogbot>|^<seadog007.{0,3}@.+> seadogbot[,:]|^<DennyHuang.{0,3}@seadogbot>|^<DennyHuang.{0,3}@.+> seadogbot[,:]' |\
+    tee -a ~/seadogbot.log |\
     awk -F'> ' '{print $NF; system("")}' |\
     awk -F'seadogbot: ' '{print $NF; system("")}' |\
     awk -F'seadogbot, ' '{print $NF; system("")}' |\
