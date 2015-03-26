@@ -91,6 +91,8 @@ bindkey "^[[D" backward-word
 bindkey "^[^[OC" forward-word
 bindkey "^[^[OD" backward-word
 
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
 
