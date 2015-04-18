@@ -8,3 +8,10 @@ defbce on    # use current bg color for erased chars]]'
 
 # ^a^a
 bind ^A meta
+
+# Unicode
+defencoding utf8
+defutf8 on
+screen
+utf8 on on
+encoding utf8
