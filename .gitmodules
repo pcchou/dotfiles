@@ -4,3 +4,12 @@
 [submodule ".omzcustom/gitrepo/zsh-git-prompt"]
 	path = .omzcustom/gitrepo/zsh-git-prompt
 	url = https://github.com/olivierverdier/zsh-git-prompt.git
+[submodule ".vim"]
+	path = .vim
+	url = https://github.com/pcchou/.vim.git
+[submodule ".tmux"]
+	path = .tmux
+	url = https://github.com/pcchou/.tmux.git
+[submodule ".pyenv"]
+	path = .pyenv
+	url = https://github.com/yyuu/pyenv.git
