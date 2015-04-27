@@ -28,3 +28,6 @@
 !.zshenv
 !.zshrc
 !.screenrc
+!.tmux
+!.vim
+!.pyenv
