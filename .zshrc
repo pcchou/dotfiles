@@ -46,7 +46,7 @@ export TERM="xterm-256color"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git catimg command-not-found common-aliases debian dircycle jsontools last-working-dir screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm encode64 pyenv)
+plugins=(git catimg command-not-found common-aliases debian dircycle jsontools screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm encode64 pyenv)
 
 # User configuration
 
