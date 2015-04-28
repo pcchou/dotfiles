@@ -107,8 +107,8 @@ nplprompt() {
 TERM=xterm-256color
 
 if ! [ -n "$npl" ]; then
-  if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+  if [ -f ~/.local/lib/python3.4/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source ~/.local/lib/python3.4/site-packages/powerline/bindings/bash/powerline.sh
   else
     nplprompt
   fi
