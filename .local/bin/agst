@@ -1,0 +1,25 @@
+#!/bin/bash
+# All-git-status stuff
+
+fagst(){
+    gitdirs=("$HOME/.vim" "$HOME/.config/powerline" "/home/pcchou/.tmux/")
+    cd $HOME
+    if [ ! -d ~/.git ]; then
+	ln -s ~/.homegit ~/.git
+    fi
+    echo $HOME
+    git status
+
+    for gitdir in "${gitdirs[@]}";do
+	cd $gitdir
+	echo $gitdir
+	git status
+    done
+}
+
+if ! [ -d ~/.git ];then
+    fagst
+    hgt
+else
+    fagst
+fi
