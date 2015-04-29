@@ -1,25 +1,25 @@
 #!/bin/bash
-# All-git-push stuff
+# All-git-pull stuff
 
-fagp(){
+fagl(){
     gitdirs=("$HOME/.vim" "$HOME/.config/powerline" "/home/pcchou/.tmux/")
     cd $HOME
     if [ ! -d ~/.git ]; then
 	ln -s ~/.homegit ~/.git
     fi
     echo $HOME
-    git push --all origin
+    git update-all
 
     for gitdir in "${gitdirs[@]}";do
 	cd $gitdir
 	echo $gitdir
-        git push --all origin
+	git update-all
     done
 }
 
 if ! [ -d ~/.git ];then
-    fagp
+    fagl
     hgt
 else
-    fagp
+    fagl
 fi
