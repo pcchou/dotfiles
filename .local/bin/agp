@@ -7,12 +7,12 @@ fagp(){
     if [ ! -d ~/.git ]; then
 	ln -s ~/.homegit ~/.git
     fi
-    echo $HOME
+    echo -e "\e[33m$HOME\e[m"
     git push --all origin
 
     for gitdir in "${gitdirs[@]}";do
 	cd $gitdir
-	echo $gitdir
+        echo -e "\e[33m$gitdir\e[m"
         git push --all origin
     done
 }
