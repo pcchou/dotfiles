@@ -24,8 +24,8 @@ nplprompt() {
 }
 
 if ! [ -n "$npl" ]; then
-  if [ -f ~/.local/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh ]; then
-    . ~/.local/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
+  if [ -f /usr/local/lib/python3.4/dist-packages/powerline/bindings/zsh/powerline.zsh ]; then
+    . /usr/local/lib/python3.4/dist-packages/powerline/bindings/zsh/powerline.zsh
     #if [[ -n "$(git_super_status)" ]]; then
     #  RPS1='$(parse_git_branch)'
     #else
