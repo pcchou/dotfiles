@@ -37,3 +37,7 @@ alias googlettsen="xargs -n1 -I{} bash -c \"wget http://translate.google.com/tra
 alias sc2bin="sed 's/\\\\/\\\\\\\\/g'|xargs -I{} echo -e {}"
 alias bin2sc="od -A n -t x1 |sed 's/ /\\\\x/g'"
 txt2sc() { printf "$1"|od -A n -t x1 |sed 's/ /\\x/g'; }
+
+#thefuck
+alias oops='eval $(thefuck $(fc -ln -1))'
+alias OOPS='oops'
