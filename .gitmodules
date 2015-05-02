@@ -4,6 +4,9 @@
 [submodule ".omzcustom/gitrepo/zsh-git-prompt"]
 	path = .omzcustom/gitrepo/zsh-git-prompt
 	url = https://github.com/olivierverdier/zsh-git-prompt.git
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh
 [submodule ".pyenv"]
 	path = .pyenv
 	url = https://github.com/yyuu/pyenv.git

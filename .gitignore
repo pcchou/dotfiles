@@ -31,5 +31,6 @@
 !.zshrc
 !.screenrc
 !.pyenv
+!.oh-my-zsh
 !.tmuxresurrect/**
 .tmuxresurrect/last
