@@ -51,3 +51,6 @@ alias OOPS='oops'
 
 # git-pup
 alias git-pup="git pull && git submodule init && git submodule update && git submodule status"
+
+# hub
+hub >/dev/null 2>&1 && eval "$(hub alias -s)"
