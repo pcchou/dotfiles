@@ -31,6 +31,5 @@
 !.zshrc
 !.screenrc
 !.pyenv
-!.tmuxresurrect/
-!.tmuxresurrect/tmux_resurrect_dt.txt
-!.tmuxresurrect/tmux_resurrect_lt.txt
+!.tmuxresurrect/**
+.tmuxresurrect/last
