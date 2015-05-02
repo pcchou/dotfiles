@@ -12,6 +12,7 @@
 !.local/
 !.local/bin
 !.local/bin/agp
+!.local/bin/git-cal
 !.local/bin/agl
 !.local/bin/agst
 !.local/bin/git-update-all
