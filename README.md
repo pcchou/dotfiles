@@ -1,5 +1,5 @@
-miscellaneous dotfiles of pcchou
-================================
+My dotfiles.
+============
 
 Included:
 * `.local/bin` utilities
