@@ -7,8 +7,8 @@
 	ui = true
 [alias]
 	lg = log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	update-all = "git-update-all "
-	pup = "git-pup "
+	update-all = "!git-update-all "
+	pup = "!git pull && git submodule init && git submodule update && git submodule status"
 [credential]
 	helper = cache --timeout=3600
 [push]
