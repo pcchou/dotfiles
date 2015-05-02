@@ -16,7 +16,6 @@
 !.local/bin/agst
 !.local/bin/git-update-all
 !.local/bin/hgt
-!.local/bin/hub-completion
 !.local/bin/imgur
 !.local/bin/waittillup
 !.local/bin/sortpics
