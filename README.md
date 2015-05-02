@@ -14,15 +14,15 @@ Included:
   * `.zshrc`, `.zshenv`, `.omzcustom`, `.oh-my-zsh`
   * `.bashrc`, `.bash_profile`
   * `.inputrc`, `.profile`
-  * `.aliases` (for all of universal aliases)
+  * `.aliases` (all of my universal aliases)
 * utilities configurations
   * `.screerc`
   * `.gitconfig`
-  * (`.tmux` and `.vim` and `.config/powerline` are in seperate repositories)
+  * (`.tmux`, `.vim`, and `.config/powerline` are in separate repositories)
     * [pcchou/.tmux](https://github.com/pcchou/.tmux)
     * [pcchou/.vim](https://github.com/pcchou/.vim)
     * [pcchou/powerline-config](https://github.com/pcchou/powerline-config)
 * addons
   * `.pyenv`
 * miscellaneous files
-  * `.tmuxresurrect` to keep my tmux workspace, it's symlinked to `~/.tmux/resurrect/`.
+  * `.tmuxresurrect` to keep my tmux workspace (used by tmux-resurrect), it's symlinked to `~/.tmux/resurrect/`.
