@@ -1,14 +1,11 @@
 *
 # All files
 
-# Except for
-!.aliases
-!.bash_profile
-!.bashrc
-!.config/
-!.gitconfig
+# Git Repo stuff
+!README.md
 !.gitignore
-!.inputrc
+
+# .local/bin Utilities
 !.local/
 !.local/bin
 !.local/bin/agp
@@ -21,16 +18,41 @@
 !.local/bin/waittillup
 !.local/bin/sortpics
 !.local/bin/seadogbot
+
+# Shell Environment Configurations
+## zsh
+!.zshrc
+!.zshenv
 !.omzcustom/
 !.omzcustom/**
-!.profile
-!README.md
-!.w3m/**
-!.xinitrc
-!.zshenv
-!.zshrc
-!.screenrc
-!.pyenv
 !.oh-my-zsh
+## bash
+!.bash_profile
+!.bashrc
+## others
+!.inputrc
+!.profile
+## All of my universal aliases
+!.aliases
+
+# Utilities Configurations
+## GNU screen
+!.screenrc
+## Git
+!.gitconfig
+## w3m
+!.w3m/**
+## others
+!.config/
+
+# Addons
+## Pyenv
+!.pyenv
+## Hub
+!.omzcustom/completions/_hub
+!.local/bin/hub-completion
+
+# Miscellaneous Files
+## Tmux Resurrect workspace
 !.tmuxresurrect/**
 .tmuxresurrect/last
