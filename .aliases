@@ -1,43 +1,53 @@
+# ls aliases
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-# some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# grep aliases
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
-
+# some workarounds
 alias mcedit='PWDB=$(pwd);cd /home/pcchou/Documents/mcedit/;python mcedit.py;cd $PWDB'
 alias gpa='gpa --disable-x509'
+alias bc='bc -l'
+
+# without powerline
 alias nbash='npl='"'true'"' bash'
 alias ybash='npl='"''"' bash'
 alias nzsh='npl='"'true'"' zsh'
 alias yzsh='npl='"''"' zsh'
 alias nvim='vim -u ~/.vim/npl.vimrc'
-alias avg='awk "{ total += \$0; count++ } END { print total/count }"'
-alias bc='bc -l'
-alias netusage='watch -n0.5 -t "vnstat -d -i eth0+usb0+bnep0|grep -v \"\-\-\""'
 
+# useful tools
+alias netusage='watch -n0.5 -t "vnstat -d -i eth0+usb0+bnep0|grep -v \"\-\-\""'
+alias avg='awk "{ total += \$0; count++ } END { print total/count }"'
+
+# rsync scp
 alias rscp='rsync -havz --progress'
 alias rscpd='rsync -havz --progress --delete'
 alias rsqcp='rsync -qhaz --progress'
 alias rsqcpd='rsync -qhaz --progress --delete'
 
+# Xclipboard
 alias xclipc='xclip -selection clipboard'
 
+# Google TTS
 alias googlettszh="xargs -n1 -I{} bash -c \"wget http://translate.google.com/translate_tts\?ie\=utf-8\&tl\=zh\&q\='`python2 -c 'import sys, urllib as ul; print ul.quote_plus({})'`' -U 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0' -O- |mpg123 -\""
 alias googlettsen="xargs -n1 -I{} bash -c \"wget http://translate.google.com/translate_tts\?ie\=utf-8\&tl\=en\&q\='`python2 -c 'import sys, urllib as ul; print ul.quote_plus({})'`' -U 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0' -O- |mpg123 -\""
 
+# Shellcode (抖
 alias sc2bin="sed 's/\\\\/\\\\\\\\/g'|xargs -I{} echo -e {}"
 alias bin2sc="od -A n -t x1 |sed 's/ /\\\\x/g'"
 txt2sc() { printf "$1"|od -A n -t x1 |sed 's/ /\\x/g'; }
 
-#thefuck
+# thefuck
 alias oops='eval $(thefuck $(fc -ln -1))'
 alias OOPS='oops'
+
+# git-pup
+alias git-pup="git pull && git submodule init && git submodule update && git submodule status"
