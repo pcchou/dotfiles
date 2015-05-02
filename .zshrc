@@ -46,11 +46,30 @@ export TERM="xterm-256color"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git catimg command-not-found common-aliases debian dircycle jsontools screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm encode64 pyenv)
+plugins=(git catimg command-not-found common-aliases debian dircycle jsontools screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm encode64 pyenv hub_completion)
 
 # User configuration
 
-export PATH="/home/pcchou/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/pcchou/scripts"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/scripts" ] ; then
+    export PATH="$PATH:$HOME/scripts"
+fi
+
+if [ -d "$HOME/.local/bin" ]; then
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Go
+if [ -d "$HOME/Go" ]; then
+    export GOPATH=$HOME/Go
+fi
+if [ -d "$GOPATH/bin" ] || [ -d "$GOROOT/bin" ]; then
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,6 +124,10 @@ bindkey '\e[A' up-line-or-beginning-search
 bindkey '\eOB' down-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
 
+# hub
+hub >/dev/null 2>&1 && eval "$(hub alias -s)"
+
+# PATH 整理
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
 export PATH
 

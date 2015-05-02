@@ -117,10 +117,7 @@ else
 fi
 
 # GitHub Hub
-if [ -d ~/.local/bin/hub ]; then
-  hub-completion
-  eval "$(hub alias -s)"
-fi
+hub >/dev/null 2>&1 && hub-completion && eval "$(hub alias -s)"
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'

@@ -49,7 +49,6 @@
 ## Pyenv
 !.pyenv
 ## Hub
-!.omzcustom/completions/_hub
 !.local/bin/hub-completion
 
 # Miscellaneous Files
