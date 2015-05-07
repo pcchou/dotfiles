@@ -12,7 +12,7 @@ Included:
     * `git update-all`, a tool by michael_n, in [a answer on StackOverflow](http://stackoverflow.com/a/17180894/4537037)
     * `git-cal`, a tool by @k4rthik, in [k4rthik/git-cal](https://github.com/k4rthik/git-cal)
 * shell environment configurations
-  * `.zshrc`, `.zshenv`, `.omzcustom`, `.oh-my-zsh`
+  * `.zshrc`, `.zshenv`, `.omzcustom`, `.oh-my-zsh` (using [robbyrussell/oh-my-zsh](robbyrussell/oh-my-zsh/))
   * `.bashrc`, `.bash_profile`
   * `.inputrc`, `.profile`
   * `.aliases` (all of my universal aliases)
