@@ -13,6 +13,7 @@ alias egrep='egrep --color=auto'
 
 # some workarounds
 alias mcedit='PWDB=$(pwd);cd /home/pcchou/Documents/mcedit/;python mcedit.py;cd $PWDB'
+alias google-chrome-stable='google-chrome-stable --allow-file-access-from-files'
 alias gpa='gpa --disable-x509'
 alias bc='bc -l'
 
@@ -22,6 +23,9 @@ alias ybash='npl='"''"' bash'
 alias nzsh='npl='"'true'"' zsh'
 alias yzsh='npl='"''"' zsh'
 alias nvim='vim -u ~/.vim/npl.vimrc'
+
+# 就真的是 alias
+alias chrome='google-chrome-stable'
 
 # useful tools
 alias netusage='watch -n0.5 -t "vnstat -d -i eth0+usb0+bnep0|grep -v \"\-\-\""'
