@@ -55,3 +55,7 @@
 ## Tmux Resurrect workspace
 !.tmuxresurrect/**
 .tmuxresurrect/last
+## .pcc configs
+!.pcc/
+!.pcc/*.example
+!.pcc/.gitkeep

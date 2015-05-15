@@ -27,3 +27,7 @@ Included:
   * `.pyenv`
 * miscellaneous files
   * `.tmuxresurrect` to keep my tmux workspace (used by tmux-resurrect), it's symlinked to `~/.tmux/resurrect/`.
+  * `.pcc` to keep some config files which will change depending on the environment.
+    * rename `.example` files, in order for them to work
+    * current list of files
+      * `gituser`, is `.gitconfig` format, used to keep Git user settings.
