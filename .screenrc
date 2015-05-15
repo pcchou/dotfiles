@@ -15,3 +15,6 @@ defutf8 on
 screen
 utf8 on on
 encoding utf8
+
+# multiuser
+multiuser on
