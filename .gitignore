@@ -53,5 +53,6 @@
 
 # Miscellaneous Files
 ## Tmux Resurrect workspace
+!.tmuxresurrect/
 !.tmuxresurrect/**
 .tmuxresurrect/last
