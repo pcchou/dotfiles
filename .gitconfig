@@ -1,6 +1,3 @@
-[user]
-	email = pcchou@pcchou.me
-	name = Philip Chou
 [core]
 	editor = vim
 [color]
@@ -18,3 +15,5 @@
 	tool = vimdiff2
 [github]
 	user = pcchou
+[include]
+	path = .pcc/gituser
