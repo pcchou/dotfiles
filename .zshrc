@@ -50,17 +50,20 @@ plugins=(git catimg command-not-found common-aliases debian dircycle jsontools s
 
 # User configuration
 
-# set PATH so it includes user's private bin if it exists
+# set PATH and PYTHONPATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
+    export PYTHONPATH="$HOME/bin:$PYTHONPATH"
 fi
 
 if [ -d "$HOME/scripts" ] ; then
     export PATH="$PATH:$HOME/scripts"
+    export PYTHONPATH="$PYTHONPATH:$HOME/scripts"
 fi
 
 if [ -d "$HOME/.local/bin" ]; then
 	export PATH="$HOME/.local/bin:$PATH"
+	export PYTHONPATH="$HOME/.local/bin:$PYTHONPATH"
 fi
 
 # Go

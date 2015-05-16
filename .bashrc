@@ -33,17 +33,20 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set PATH so it includes user's private bin if it exists
+# set PATH and PYTHONPATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
+    export PYTHONPATH="$HOME/bin:$PYTHONPATH"
 fi
 
 if [ -d "$HOME/scripts" ] ; then
     export PATH="$PATH:$HOME/scripts"
+    export PYTHONPATH="$PYTHONPATH:$HOME/scripts"
 fi
 
 if [ -d "$HOME/.local/bin" ]; then
 	export PATH="$HOME/.local/bin:$PATH"
+	export PYTHONPATH="$HOME/.local/bin:$PYTHONPATH"
 fi
 
 # Go
