@@ -27,7 +27,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 # include .bashrc if it exists
 if [ -f "$HOME/.bashrc" ]; then
-. "$HOME/.bashrc"
+    source "$HOME/.bashrc"
 fi
 
 #PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
