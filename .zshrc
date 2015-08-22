@@ -113,6 +113,9 @@ bindkey "^[[D" backward-word
 bindkey "^[^[OC" forward-word
 bindkey "^[^[OD" backward-word
 
+bindkey "^[j" down-line-or-history
+bindkey "^[k" up-line-or-history
+
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "\e[1~" beginning-of-line
