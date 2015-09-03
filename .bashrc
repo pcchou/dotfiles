@@ -33,30 +33,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set PATH and PYTHONPATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$HOME/bin:$PATH"
-    export PYTHONPATH="$HOME/bin:$PYTHONPATH"
-fi
-
-if [ -d "$HOME/scripts" ] ; then
-    export PATH="$PATH:$HOME/scripts"
-    export PYTHONPATH="$PYTHONPATH:$HOME/scripts"
-fi
-
-if [ -d "$HOME/.local/bin" ]; then
-	export PATH="$HOME/.local/bin:$PATH"
-	export PYTHONPATH="$HOME/.local/bin:$PYTHONPATH"
-fi
-
-# Go
-if [ -d "$HOME/Go" ]; then
-    export GOPATH=$HOME/Go
-fi
-if [ -d "$GOPATH/bin" ] || [ -d "$GOROOT/bin" ]; then
-    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-fi
-
 # XDG_CONFIG_HOME
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -74,6 +50,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ -f ~/.aliases ]; then
     source ~/.aliases
+fi
+
+if [ -f ~/.pathes ]; then
+    source ~/.pathes
 fi
 
 if [ -f ~/.others ]; then
@@ -131,5 +111,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# PATH 整理
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
 export PATH

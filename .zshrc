@@ -48,64 +48,21 @@ export TERM="xterm-256color"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git catimg command-not-found common-aliases debian dircycle jsontools screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm encode64 pyenv hub_completion)
 
-# User configuration
-
-# set PATH and PYTHONPATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$HOME/bin:$PATH"
-    export PYTHONPATH="$HOME/bin:$PYTHONPATH"
-fi
-
-if [ -d "$HOME/scripts" ] ; then
-    export PATH="$PATH:$HOME/scripts"
-    export PYTHONPATH="$PYTHONPATH:$HOME/scripts"
-fi
-
-if [ -d "$HOME/.local/bin" ]; then
-	export PATH="$HOME/.local/bin:$PATH"
-	export PYTHONPATH="$HOME/.local/bin:$PYTHONPATH"
-fi
-
-# Go
-if [ -d "$HOME/Go" ]; then
-    export GOPATH=$HOME/Go
-fi
-if [ -d "$GOPATH/bin" ] || [ -d "$GOROOT/bin" ]; then
-    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-fi
+# Hub
+hub >/dev/null 2>&1 && eval "$(hub alias -s)"
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 if [ -f ~/.aliases ]; then
-    . ~/.aliases
+    source ~/.aliases
+fi
+
+if [ -f ~/.pathes ]; then
+    source ~/.pathes
 fi
 
 if [ -f ~/.others ]; then
-    . ~/.others
+    source ~/.others
 fi
 
 bindkey "^[[C" forward-word
@@ -130,13 +87,6 @@ bindkey '\e[A' up-line-or-beginning-search
 bindkey '\eOB' down-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
 
-# hub
-hub >/dev/null 2>&1 && eval "$(hub alias -s)"
-
 # PATH 整理
 PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
 export PATH
-
-# Add your own custom plugins in the custom/plugins directory. Plugins placed
-# here will override ones with the same name in the main plugins directory.
-
