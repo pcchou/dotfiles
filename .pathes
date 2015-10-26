@@ -1,3 +1,13 @@
+# google cloud sdk
+if [ -d "$HOME/google-cloud-sdk/" ]; then
+    # The next line updates PATH for the Google Cloud SDK.
+    source '/home/pcchou/google-cloud-sdk/path.zsh.inc'
+
+    # The next line enables shell command completion for gcloud.
+    source '/home/pcchou/google-cloud-sdk/completion.zsh.inc'
+fi
+
+
 # ctf-tools
 export PATH="$HOME/git/ctf-tools/bin:$PATH"
 
@@ -5,12 +15,12 @@ export PATH="$HOME/git/ctf-tools/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # set PATH and PYTHONPATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"
     export PYTHONPATH="$HOME/bin:$PYTHONPATH"
 fi
 
-if [ -d "$HOME/scripts" ] ; then
+if [ -d "$HOME/scripts" ]; then
     export PATH="$PATH:$HOME/scripts"
     export PYTHONPATH="$PYTHONPATH:$HOME/scripts"
 fi
