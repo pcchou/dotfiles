@@ -7,6 +7,8 @@ if [ -d "$HOME/google-cloud-sdk/" ]; then
     source '/home/pcchou/google-cloud-sdk/completion.zsh.inc'
 fi
 
+# hub
+hub >/dev/null 2>&1 && eval "$(hub alias -s)"
 
 # ctf-tools
 export PATH="$HOME/git/ctf-tools/bin:$PATH"
