@@ -4,7 +4,7 @@ if [ -d "$HOME/google-cloud-sdk/" ]; then
     source '/home/pcchou/google-cloud-sdk/path.zsh.inc'
 
     # The next line enables shell command completion for gcloud.
-    source '/home/pcchou/google-cloud-sdk/completion.zsh.inc'
+    #source '/home/pcchou/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # hub
