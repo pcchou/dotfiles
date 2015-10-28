@@ -97,4 +97,5 @@ fi
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
+bind '"\el": "ls\n"'
 #bind 'TAB: menu-complete'
