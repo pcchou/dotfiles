@@ -1,4 +1,4 @@
 $include /etc/inputrc
 set completion-ignore-case On
-
 set show-all-if-ambiguous on
+set prefer-visible-bell on
