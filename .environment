@@ -125,7 +125,7 @@ if [ -n "$BASH_VERSION"  ]; then
     eval "$(pyenv init -)"
 
     # git_remote_branch
-    grbc=`gem contents git_remote_branch | grep grb-completion.bash` && source $grbc
+    gem >/dev/null 2>&1 && grbc=`gem contents git_remote_branch | grep grb-completion.bash` && source $grbc
 
     # dirclolors-solarized
     eval `dircolors ~/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
