@@ -104,7 +104,7 @@ hub >/dev/null 2>&1 && hub-completion && eval "$(hub alias -s)"
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
-bind 'TAB: menu-complete'
+#bind 'TAB: menu-complete'
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
