@@ -34,8 +34,7 @@
 !.inputrc
 !.profile
 ## All of my universal aliases
-!.aliases
-!.pathes
+!.environment
 
 # Utilities Configurations
 ## GNU screen

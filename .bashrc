@@ -48,12 +48,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
-fi
-
-if [ -f ~/.pathes ]; then
-    source ~/.pathes
+if [ -f ~/.environment ]; then
+    source ~/.environment
 fi
 
 if [ -f ~/.others ]; then
@@ -99,18 +95,6 @@ else
   nplprompt
 fi
 
-# GitHub Hub
-hub >/dev/null 2>&1 && hub-completion && eval "$(hub alias -s)"
-
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 #bind 'TAB: menu-complete'
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# PATH 整理
-PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
-export PATH

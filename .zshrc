@@ -46,23 +46,16 @@ export TERM="xterm-256color"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git catimg command-not-found common-aliases debian dircycle jsontools screen sudo urltools web-search wd gitfast git-extras git-flow git_remote_branch pip gem npm encode64 pyenv hub_completion)
-
-# Hub
-hub >/dev/null 2>&1 && eval "$(hub alias -s)"
+plugins=(git catimg command-not-found common-aliases screen sudo urltools wd gitfast git-extras git-flow git_remote_branch pip gem npm golang encode64 pyenv hub_completion)
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
+if [ -f ~/.environment ]; then
+    source ~/.environment
 fi
 
-if [ -f ~/.pathes ]; then
-    source ~/.pathes
-fi
-
-if [ -f ~/.others ]; then
-    source ~/.others
+if [ -f ~/.localenv ]; then
+    source ~/.localenv
 fi
 
 bindkey "^[[C" forward-word
@@ -75,8 +68,6 @@ bindkey "^[k" up-line-or-history
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
 
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
@@ -86,7 +77,3 @@ bindkey '\eOA' up-line-or-beginning-search
 bindkey '\e[A' up-line-or-beginning-search
 bindkey '\eOB' down-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
-
-# PATH 整理
-PATH=`perl -e '@A=split(/:/,$ENV{PATH});%H=map {$A[$#A-$_]=>$#A-$_} (0..$#A);@A=join(":",sort{$H{$a} <=> $H{$b} }keys %H);print "@A"'`
-export PATH
