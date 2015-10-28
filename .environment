@@ -1,7 +1,7 @@
 #### PATH ####
 
 # Go
-if [ -d "~/Go" ]; then
+if [ -d "$HOME/Go" ]; then
     export GOPATH=$HOME/Go
 fi
 if [ -d "$GOPATH/bin" ] || [ -d "$GOROOT/bin" ]; then
@@ -9,35 +9,35 @@ if [ -d "$GOPATH/bin" ] || [ -d "$GOROOT/bin" ]; then
 fi
 
 # ctf-tools
-if [ -d "~/git/ctf-tools/bin" ]; then
+if [ -d "$HOME/git/ctf-tools/bin" ]; then
     export PATH="$HOME/git/ctf-tools/bin:$PATH"
 fi
 
 # rvm
-if [ -d "~/git/my-files/bin/" ]; then
+if [ -d "$HOME/git/my-files/bin/" ]; then
     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 fi
 
 # my-files
-if [ -d "~/git/my-files/bin/" ]; then
+if [ -d "$HOME/git/my-files/bin/" ]; then
     export PATH="$HOME/git/my-files/bin:$PATH"
     export PYTHONPATH="$HOME/git/my-files/bin:$PYTHONPATH"
 fi
 
 # set PATH and PYTHONPATH so it includes user's private bin if it exists
-if [ -d "~/bin" ]; then
+if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"
     export PYTHONPATH="$HOME/bin:$PYTHONPATH"
 fi
 
-if [ -d "~/scripts" ]; then
+if [ -d "$HOME/scripts" ]; then
     export PATH="$PATH:$HOME/scripts"
     export PYTHONPATH="$PYTHONPATH:$HOME/scripts"
 fi
 
-if [ -d "~/.local/bin" ]; then
-	export PATH="$HOME/.local/bin:$PATH"
-	export PYTHONPATH="$HOME/.local/bin:$PYTHONPATH"
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+    export PYTHONPATH="$HOME/.local/bin:$PYTHONPATH"
 fi
 
 # PATH 整理
@@ -133,16 +133,16 @@ if [ -n "$BASH_VERSION"  ]; then
 fi
 
 # google cloud sdk
-if [ -d "~/google-cloud-sdk/" ]; then
+if [ -d "$HOME/google-cloud-sdk/" ]; then
     # The next line updates PATH for the Google Cloud SDK.
-    source '$HOME/google-cloud-sdk/path.zsh.inc'
+    source "$HOME/google-cloud-sdk/path.zsh.inc"
 
     # The next line enables shell command completion for gcloud.
     #source '/home/pcchou/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # git_remote_branch
-unalias grb
+[[ $(which grb) == *"aliased to"* ]] && unalias grb
 
 # hub
 hub >/dev/null 2>&1 && eval "$(hub alias -s)"
