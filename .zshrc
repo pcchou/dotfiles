@@ -62,6 +62,8 @@ bindkey "^[[C" forward-word
 bindkey "^[[D" backward-word
 bindkey "^[^[OC" forward-word
 bindkey "^[^[OD" backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 bindkey "^[j" down-line-or-history
 bindkey "^[k" up-line-or-history
