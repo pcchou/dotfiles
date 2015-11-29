@@ -77,7 +77,7 @@ nplprompt() {
   if [ -n "$SSH_CLIENT" ]; then
     PS1='\[\e[0;33m\]\u@\h\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
   else
-    PS1='\[\e[0;33m\]\u\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
+    PS1='\[\e[0;36m\]\u\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
   fi
   alias _powerline_set_prompt='#'
   alias _powerline_tmux_set_pwd='#'
