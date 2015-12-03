@@ -14,6 +14,19 @@ eval `dircolors $HOME/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
 
 prompt() {
   powerline_status=""
+
+  ZSH_THEME_GIT_PROMPT_PREFIX="[ "
+  ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+  ZSH_THEME_GIT_PROMPT_SEPARATOR=" |"
+  ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+  ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[red]%}%{●%G%} "
+  ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%} "
+  ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[blue]%}%{✚%G%} "
+  ZSH_THEME_GIT_PROMPT_BEHIND=" %{↓%G%} "
+  ZSH_THEME_GIT_PROMPT_AHEAD=" %{↑%G%} "
+  ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{…%G%} "
+  ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg_bold[green]%}%{✔%G%} "
+
   if [[ "$EUID" -eq 0 ]]; then
     PS1='%{$fg[red]%}!!!$(whoami)!!!@$(hostname -s)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
     RPS1='$(git_super_status)'
