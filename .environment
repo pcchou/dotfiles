@@ -57,11 +57,24 @@ alias google-chrome-stable='google-chrome-stable --allow-file-access-from-files'
 alias gpa='gpa --disable-x509'
 alias bc='bc -l'
 
-# without powerline
-alias nbash='npl='"'true'"' bash'
-alias ybash='npl='"''"' bash'
-alias nzsh='npl='"'true'"' zsh'
-alias yzsh='npl='"''"' zsh'
+# toggle powerline
+if [[ -n $powerline_status && -n $toggle_powerline ]]; then
+    alias nbash="toggle_powerline='' bash"
+    alias ybash=bash
+    alias nzsh="toggle_powerline='' zsh"
+    alias yzsh=zsh
+elif [[ -n $powerline_status ]]; then
+    alias nbash="toggle_powerline='true' bash"
+    alias ybash=bash
+    alias nzsh="toggle_powerline='true' zsh"
+    alias yzsh=zsh
+else
+    alias nbash=bash
+    alias ybash="toggle_powerline='true' bash"
+    alias nzsh=zsh
+    alias yzsh="toggle_powerline='true' zsh"
+fi
+
 alias nvim='vim -u ~/.vim/npl.vimrc'
 
 # 就真的是 alias

@@ -30,6 +30,40 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+# show git branch
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+prompt() {
+  powerline_status=''
+  if [[ $EUID -eq 0 ]]; then
+    PS1='\[\e[0;31m\]$(whoami)\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
+  else
+    if [[ -n "$SSH_CLIENT" ]]; then
+      PS1='\[\e[0;33m\]$(whoami)@$(hostname -s)\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
+    else
+      PS1='\[\e[0;36m\]$(whoami)\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
+    fi
+  fi
+  alias _powerline_set_prompt="#"
+  alias _powerline_tmux_set_pwd="#"
+}
+
+TERM=xterm-256color
+
+if [[ ( -n "$toggle_powerline" && -a $HOME/.npl ) || ( -z "$toggle_powerline" && ! -a $HOME/.npl ) ]] ; then
+  if python -c "import powerline" 2>/dev/null; then
+    powerline_status="true"
+    . $(python -c "import os, powerline; print(os.path.dirname(powerline.__file__))")/bindings/bash/powerline.sh
+  else
+    prompt
+  fi
+else
+  prompt
+fi
+
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -68,32 +102,6 @@ if ! shopt -oq posix; then
 fi
 
 
-# show git branch
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-nplprompt() {
-  if [ -n "$SSH_CLIENT" ]; then
-    PS1='\[\e[0;33m\]\u@\h\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
-  else
-    PS1='\[\e[0;36m\]\u\[\e[m\]: \[\e[1;34m\]\w\[\e[m\]\[\e[1;36m\]$(parse_git_branch)\[\e[m\] $ '
-  fi
-  alias _powerline_set_prompt='#'
-  alias _powerline_tmux_set_pwd='#'
-}
-
-TERM=xterm-256color
-
-if ! [ -n "$npl" ]; then
-  if [ -f /usr/local/lib/python3.4/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-    source /usr/local/lib/python3.4/dist-packages/powerline/bindings/bash/powerline.sh
-  else
-    nplprompt
-  fi
-else
-  nplprompt
-fi
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
