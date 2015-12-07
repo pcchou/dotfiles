@@ -58,19 +58,18 @@ if [ -f ~/.localenv ]; then
     source ~/.localenv
 fi
 
+
+# Keybinds
 bindkey "^[[C" forward-word
 bindkey "^[[D" backward-word
 bindkey "^[^[OC" forward-word
 bindkey "^[^[OD" backward-word
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
-
 bindkey "^[j" down-line-or-history
 bindkey "^[k" up-line-or-history
-
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
-
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -79,3 +78,6 @@ bindkey '\eOA' up-line-or-beginning-search
 bindkey '\e[A' up-line-or-beginning-search
 bindkey '\eOB' down-line-or-beginning-search
 bindkey '\e[B' down-line-or-beginning-search
+
+# Prevent "no matches found"
+unsetopt nomatch
