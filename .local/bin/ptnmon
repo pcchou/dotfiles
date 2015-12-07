@@ -14,7 +14,7 @@ tmux send-keys 'wavemon' "^m"
 sleep 0.1
 tmux split-window -v
 sleep 0.1
-tmux send-keys "watch -tn1 \"ethtool eth0 2>/dev/null |grep 'Speed\\|Duplex\\|Port\\|Link detected\\|base' |tr -d '\\t'\"" "^m"
+tmux send-keys "watch -tn1 \"ethtool eth0 2>/dev/null |grep 'Speed\\|Duplex\\|Port\\|Link detected' |tr -d '\\t'\"" "^m"
 sleep 0.1
 tmux split-window -v
 sleep 0.1
