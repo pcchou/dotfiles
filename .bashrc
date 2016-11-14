@@ -41,7 +41,7 @@ prompt() {
     PS1='\[\e[0;31m\]$(whoami)\[\e[m\]: \[\e[0;34m\]\w\[\e[m\]\[\e[0;36m\]$(parse_git_branch)\[\e[m\] $ '
   else
     if [[ -n "$SSH_CLIENT" ]]; then
-      PS1='\[\e[0;33m\]$(whoami)@$(hostname -s)\[\e[m\]: \[\e[0;34m\]\w\[\e[m\]\[\e[0;36m\]$(parse_git_branch)\[\e[m\] $ '
+      PS1='\[\e[1;32m\]$(whoami)@$(hostname -s)\[\e[m\]: \[\e[0;34m\]\w\[\e[m\]\[\e[0;36m\]$(parse_git_branch)\[\e[m\] $ '
     else
       PS1='\[\e[0;36m\]$(whoami)\[\e[m\]: \[\e[0;34m\]\w\[\e[m\]\[\e[0;36m\]$(parse_git_branch)\[\e[m\] $ '
     fi

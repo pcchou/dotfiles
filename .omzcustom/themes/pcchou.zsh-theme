@@ -32,7 +32,7 @@ prompt() {
     RPS1='$(git_super_status)'
   else
     if [[ -n "$SSH_CLIENT" ]]; then
-      PS1='%{$fg[yellow]%}$(whoami)@$(hostname -s)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
+      PS1='%{$fg_bold[green]%}$(whoami)@$(hostname -s)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
       RPS1='$(git_super_status)'
     else
       PS1='%{$fg[cyan]%}$(whoami)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '

@@ -17,3 +17,6 @@
 	user = pcchou
 [include]
 	path = .pcc/gituser
+[user]
+	email = pcchou@pcchou.me
+	name = Philip Ping-yu Chou
