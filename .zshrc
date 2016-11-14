@@ -46,7 +46,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git catimg command-not-found common-aliases screen sudo urltools wd gitfast git-extras git-flow git_remote_branch pip gem npm golang encode64 pyenv hub_completion)
+plugins=(git catimg command-not-found common-aliases screen sudo urltools wd gitfast git-extras git-flow git_remote_branch pip gem npm golang encode64 pyenv hub_completion nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,3 +81,6 @@ bindkey '\e[B' down-line-or-beginning-search
 
 # Prevent "no matches found"
 unsetopt nomatch
+
+export NVM_DIR="/home/pcchou/.nvm"
+[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
