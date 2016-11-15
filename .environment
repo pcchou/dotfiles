@@ -112,6 +112,9 @@ alias git-pup="git pull && git submodule init && git submodule update && git sub
 # msieve
 alias sieve="msieve -q "
 
+# cpcode
+alias cpcode="bash -c 'cat \`cat .viminfo | grep \"File marks\" -A1 | tail -n1 | awk \"{print \\\\\$NF}\" | sed \"s#~#\$HOME#\"\` | xclip -selection clipboard'"
+
 #### SCRIPT ####
 
 # oh-my-zsh plugins for bash
