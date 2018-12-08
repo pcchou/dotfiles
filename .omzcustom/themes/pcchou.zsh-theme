@@ -8,8 +8,6 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-source "$HOME/.omzcustom/gitrepo/zsh-git-prompt/zshrc.sh"
-
 eval `dircolors $HOME/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
 
 prompt() {

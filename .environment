@@ -158,9 +158,9 @@ if [ -d "$HOME/google-cloud-sdk/" ]; then
 fi
 
 # git_remote_branch
-[[ $(which grb) == *"aliased to"* ]] && unalias grb
+#[[ $(which grb) == *"aliased to"* ]] && unalias grb
 
 # hub
-hub >/dev/null 2>&1 && eval "$(hub alias -s)"
+hub version >/dev/null 2>&1 && eval "$(hub alias -s)"
 
 # vim: ft=sh
