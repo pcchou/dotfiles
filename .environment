@@ -163,4 +163,9 @@ fi
 # hub
 hub version >/dev/null 2>&1 && eval "$(hub alias -s)"
 
+# tj/n
+export PATH="$HOME/.n/bin:$PATH"
+export PREFIX=$HOME/.n
+export N_PREFIX=$HOME/.n
+
 # vim: ft=sh

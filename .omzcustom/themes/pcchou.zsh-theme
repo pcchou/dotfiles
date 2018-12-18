@@ -26,14 +26,14 @@ prompt() {
   ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg_bold[green]%}%{✔%G%} "
 
   if [[ "$EUID" -eq 0 ]]; then
-    PS1='%{$fg[red]%}!!!$(whoami)!!!@$(hostname -s)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
+    PS1='%{$fg[red]%}!!!$(whoami)!!!@$(hostname -s)%{$reset_color%}: %{[00;38;5;244m%}${PWD/$HOME/~}%{$reset_color%} $ '
     RPS1='$(git_super_status)'
   else
     if [[ -n "$SSH_CLIENT" ]]; then
-      PS1='%{$fg_bold[green]%}$(whoami)@$(hostname -s)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
+      PS1='%{$fg_bold[green]%}$(whoami)@$(hostname -s)%{$reset_color%}: %{[00;38;5;244m%}${PWD/$HOME/~}%{$reset_color%} $ '
       RPS1='$(git_super_status)'
     else
-      PS1='%{$fg[cyan]%}$(whoami)%{$reset_color%}: %{$fg[blue]%}${PWD/$HOME/~}%{$reset_color%} $ '
+      PS1='%{$fg[cyan]%}$(whoami)%{$reset_color%}: %{[00;38;5;244m%}${PWD/$HOME/~}%{$reset_color%} $ '
       RPS1='$(git_super_status)'
     fi
   fi

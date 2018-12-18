@@ -12,7 +12,7 @@ export TERM="xterm-256color"
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -60,24 +60,20 @@ fi
 
 
 # Keybinds
-bindkey "^[[C" forward-word
-bindkey "^[[D" backward-word
-bindkey "^[^[OC" forward-word
-bindkey "^[^[OD" backward-word
-bindkey "^[[1;3C" forward-word
-bindkey "^[[1;3D" backward-word
-bindkey "^[j" down-line-or-history
-bindkey "^[k" up-line-or-history
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
+bindkey "[1;3C" forward-word
+bindkey "[1;3D" backward-word
+bindkey "j" down-line-or-history
+bindkey "k" up-line-or-history
+bindkey "[1~" beginning-of-line
+bindkey "[4~" end-of-line
 autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey '\eOA' up-line-or-beginning-search
-bindkey '\e[A' up-line-or-beginning-search
-bindkey '\eOB' down-line-or-beginning-search
-bindkey '\e[B' down-line-or-beginning-search
+#bindkey '\eOA' up-line-or-beginning-search
+#bindkey '\e[A' up-line-or-beginning-search
+#bindkey '\eOB' down-line-or-beginning-search
+#bindkey '\e[B' down-line-or-beginning-search
 
 # Prevent "no matches found"
 unsetopt nomatch
