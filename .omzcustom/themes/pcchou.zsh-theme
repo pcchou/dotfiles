@@ -8,7 +8,9 @@ parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-eval `dircolors $HOME/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
+if which dircolors >/dev/null 2>&1; then
+    eval `dircolors $HOME/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
+fi
 
 prompt() {
   powerline_status=""

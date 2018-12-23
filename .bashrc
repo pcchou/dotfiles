@@ -71,7 +71,9 @@ fi
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # enable color support of ls and also add handy aliases
-test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if which dircolors >/dev/null 2>&1; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -84,6 +86,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 if [ -f ~/.environment ]; then
     source ~/.environment
+fi
+
+if [ -f ~/.localenv ]; then
+    source ~/.localenv
 fi
 
 if [ -f ~/.others ]; then
@@ -110,3 +116,4 @@ bind '"\el": "ls\n"'
 
 export NVM_DIR="/home/pcchou/.nvm"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

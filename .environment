@@ -146,7 +146,7 @@ if [ -n "$BASH_VERSION"  ]; then
     gem >/dev/null 2>&1 && grbc=`gem contents git_remote_branch | grep grb-completion.bash` && source $grbc
 
     # dirclolors-solarized
-    eval `dircolors ~/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
+    which dircolors >/dev/null 2>&1 && eval `dircolors ~/.omzcustom/gitrepo/dircolors-solarized/dircolors.256dark`
 
 fi
 
