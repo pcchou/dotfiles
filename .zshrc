@@ -96,17 +96,14 @@ if [ -f '/Users/pcchou/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/pcchou/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/pcchou/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-if [[ -d $HOME/.zsh/zsh-git-prompt ]]; then
-  # git_super_status
-  source ~/.zsh/zsh-git-prompt/zshrc.sh
-
-  ## show git branch
-  #parse_git_branch() {
-  #  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-  #}
-else
-  alias git_super_status=''
-fi
+# Load version control information
+autoload -Uz vcs_info
+# Enabling and setting git info var to be used in prompt config.
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git svn
+# This line obtains information from the vcs.
+zstyle ':vcs_info:git*' formats "(%b) "
+precmd() { vcs_info }
 
 prompt() {
   powerline_status=""
@@ -125,17 +122,15 @@ prompt() {
 
   if [[ "$EUID" -eq 0 ]]; then
     PS1='%{$fg[red]%}!!!$USER!!!@$HOST%{$reset_color%}: %{[00;38;5;244m%}${PWD/$HOME/~}%{$reset_color%} $ '
-    if [ -d .git ]; then RPS1='$(git_super_status)'; else RPS1=''; fi
   else
     if [[ -n "$SSH_CLIENT" ]]; then
       PS1='%{$fg_bold[green]%}$USER@$HOST%{$reset_color%}: %{[00;38;5;244m%}${PWD/$HOME/~}%{$reset_color%} $ '
-      if [ -d .git ]; then RPS1='$(git_super_status)'; else RPS1=''; fi
     else
       PS1='%{$fg[cyan]%}$USER%{$reset_color%}: %{[00;38;5;244m%}${PWD/$HOME/~}%{$reset_color%} $ '
-      if [ -d .git ]; then RPS1='$(git_super_status)'; else RPS1=''; fi
     fi
   fi
 
+  RPS1='%{$fg_bold[cyan]%}${vcs_info_msg_0_}%{$reset_color%}'
   RPS1=$'%{\e]1;${PWD/$HOME/~}\a%}'$RPS1
 
 
