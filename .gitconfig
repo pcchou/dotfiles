@@ -1,22 +1,7 @@
-[core]
-	editor = vim
-[color]
-	ui = true
-[alias]
-	lg = log --color --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	update-all = "!git-update-all "
-	cal = "!git-cal "
-	pup = "!git pull && git submodule init && git submodule update && git submodule status "
-[credential]
-	helper = cache --timeout=3600
-[push]
-	default = matching
-[merge]
-	tool = vimdiff2
-[github]
-	user = pcchou
-[include]
-	path = .pcc/gituser
+# This is Git's per-user configuration file.
 [user]
-	email = pcchou@pcchou.me
-	name = Philip Ping-yu Chou
+# Please adapt and uncomment the following lines:
+	name = Ping-yu Chou
+	email = mail@pcchou.me
+[init]
+	defaultBranch = main
