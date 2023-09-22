@@ -95,10 +95,6 @@ alias rsqcpd='rsync -qhaz --progress --delete'
 # Xclipboard
 alias xclipc='xclip -selection clipboard'
 
-# Google TTS
-alias googlettszh="xargs -n1 -I{} bash -c \"wget http://translate.google.com/translate_tts\?ie\=utf-8\&tl\=zh\&q\='`python2 -c 'import sys, urllib as ul; print ul.quote_plus({})'`' -U 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0' -O- |mpg123 -\""
-alias googlettsen="xargs -n1 -I{} bash -c \"wget http://translate.google.com/translate_tts\?ie\=utf-8\&tl\=en\&q\='`python2 -c 'import sys, urllib as ul; print ul.quote_plus({})'`' -U 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0' -O- |mpg123 -\""
-
 # Shellcode (抖
 alias sc2bin="sed 's/\\\\/\\\\\\\\/g'|xargs -I{} echo -e {}"
 alias bin2sc="od -A n -t x1 |sed 's/ /\\\\x/g'"
@@ -120,7 +116,7 @@ alias cpcode="bash -c 'cat \`cat .viminfo | grep \"File marks\" -A1 | tail -n1 |
 #### SCRIPT ####
 
 # oh-my-zsh plugins for bash
-if [ -n "$BASH_VERSION"  ]; then
+if [ -n "$BASH_VERSION"  ] && [ -d ~/.oh-my-zsh ]; then
     # wd
     wd() {
 	. ~/.oh-my-zsh/plugins/wd/wd.sh
