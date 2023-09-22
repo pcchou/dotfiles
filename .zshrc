@@ -3,9 +3,9 @@ autoload -U colors && colors
 setopt prompt_subst
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
+HISTSIZE=50000
+SAVEHIST=50000
+setopt INC_APPEND_HISTORY_TIME
 
 # zsh completion
 autoload -Uz compinit && compinit
@@ -35,8 +35,6 @@ bindkey '^[[B' down-line-or-beginning-search
 unsetopt nomatch
 
 alias vim="/opt/local/bin/vim"
-export PATH="$PATH:/Users/pcchou/Library/Python/3.7/bin"
-export PATH="$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/3.7/bin"
 export EDITOR="/opt/local/bin/vim"
 alias curlw='curl -w "\n"'
 alias git='LANG=en_GB /opt/local/bin/git'
@@ -53,14 +51,31 @@ if [ -f /opt/local/etc/profile.d/bash_completion.sh  ]; then
   . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
-export CFLAGS="-D_DARWIN_C_SOURCE -I/opt/local/include -L/opt/local/lib -lreadline"
+#export CFLAGS="-D_DARWIN_C_SOURCE -I/opt/local/include -L/opt/local/lib -lreadline"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/pcchou/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/pcchou/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/pcchou/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/pcchou/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 #pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv >/dev/null 2>&1; then
   # Init pyenv-virtualenv, but
   # unload precmd hook _pyenv_virtualenv_hook
-  eval "$(pyenv init - --path)"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
 
@@ -84,11 +99,6 @@ function swap()
   tmpfile=$(mktemp $(dirname "$1")/XXXXXX)
   mv "$1" "$tmpfile" && mv "$2" "$1" &&  mv "$tmpfile" "$2"
 }
-
-# Setting PATH for Python 3.9
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
-export PATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/pcchou/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/pcchou/Downloads/google-cloud-sdk/path.zsh.inc'; fi
@@ -131,7 +141,7 @@ prompt() {
   fi
 
   RPS1='%{$fg_bold[cyan]%}${vcs_info_msg_0_}%{$reset_color%}'
-  RPS1=$'%{\e]1;${PWD/$HOME/~}\a%}'$RPS1
+  RPS1=$'%{\e]0;${PWD/$HOME/~}\a%}'$RPS1
 
 
 }
@@ -155,21 +165,6 @@ sprunge() {
   fi
 }
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 export PATH="/opt/local/libexec/gnubin/:$PATH"
 
 # enable color support of ls and also add handy aliases
@@ -191,3 +186,6 @@ if command -v dircolors >/dev/null 2>&1 && [[ -d $HOME/.zsh/dircolors-solarized 
   eval `dircolors $HOME/.zsh/dircolors-solarized/dircolors.256dark`
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
+
+# alias
+alias lslisten="sudo lsof -i -P | grep LISTEN | grep :$PORT"

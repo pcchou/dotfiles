@@ -5,3 +5,7 @@
 	email = mail@pcchou.me
 [init]
 	defaultBranch = main
+[alias]
+	lg = log --oneline --decorate --all --graph
+[pull]
+	rebase = false

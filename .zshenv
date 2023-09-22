@@ -1,1 +1,1 @@
-ZSH_CUSTOM=$HOME/.omzcustom
+. "$HOME/.cargo/env"
