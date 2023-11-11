@@ -28,8 +28,10 @@ autoload -Uz up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search
-bindkey '^[[B' down-line-or-beginning-search
+bindkey '[A' up-line-or-beginning-search
+bindkey '[B' down-line-or-beginning-search
+bindkey '[C' forward-word
+bindkey '[D' backward-word
 
 # Prevent "no matches found"
 unsetopt nomatch
@@ -189,3 +191,5 @@ fi
 
 # alias
 alias lslisten="sudo lsof -i -P | grep LISTEN | grep :$PORT"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
