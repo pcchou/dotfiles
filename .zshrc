@@ -194,4 +194,4 @@ alias lslisten="sudo lsof -i -P | grep LISTEN | grep :$PORT"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
 
-source .localenv
+source $HOME/.localenv
