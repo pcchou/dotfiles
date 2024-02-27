@@ -45,6 +45,7 @@
 !.w3m/**
 ## others
 !.config/
+!.Rprofile
 
 # Addons
 ## Pyenv
